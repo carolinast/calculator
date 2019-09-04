@@ -29,6 +29,9 @@ public class Calculator {
     private JButton equals;
     private JButton clear;
 
+    double number;
+    double result;
+    int operation;
 
     public Calculator() {
         button00.addActionListener(new ActionListener() {
@@ -138,13 +141,44 @@ public class Calculator {
             public void actionPerformed(ActionEvent e) {
                 int value = input.getText().length() - 1;
 
-                if (value > 0) {
+                if (value > -1) {
                     StringBuilder undoneValue = new StringBuilder(input.getText());
                     undoneValue.deleteCharAt(value);
                     input.setText(String.valueOf(undoneValue));
                 }
             }
         });
+        equals.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                arithmeticOperation();
+            }
+        });
+    }
+
+    private void arithmeticOperation() {
+
+        switch (operation) {
+            case 1:
+                result = number + Double.parseDouble(input.getText());
+                input.setText(Double.toString(result));
+                break;
+
+            case 2:
+                result = number - Double.parseDouble(input.getText());
+                input.setText(Double.toString(result));
+                break;
+
+            case 3:
+                result = number * Double.parseDouble(input.getText());
+                input.setText(Double.toString(result));
+                break;
+
+            case 4:
+                result = number / Double.parseDouble(input.getText());
+                input.setText(Double.toString(result));
+                break;
+        }
     }
 
     public static void main(String[] args) {
