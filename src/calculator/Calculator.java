@@ -9,7 +9,6 @@ public class Calculator {
 
     private JPanel myPanel;
     private JTextField input;
-
     private JButton button00;
     private JButton button0;
     private JButton button1;
@@ -21,7 +20,6 @@ public class Calculator {
     private JButton button7;
     private JButton button8;
     private JButton button9;
-
     private JButton multiply;
     private JButton undo;
     private JButton divide;
@@ -103,6 +101,48 @@ public class Calculator {
             @Override
             public void actionPerformed(ActionEvent e) {
                 input.setText(input.getText() + "9");
+            }
+        });
+        plus.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                input.setText(input.getText() + "+");
+            }
+        });
+        minus.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                input.setText(input.getText() + "-");
+            }
+        });
+        multiply.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                input.setText(input.getText() + "*");
+            }
+        });
+        divide.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                input.setText(input.getText() + "/");
+            }
+        });
+        clear.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                input.setText("");
+            }
+        });
+        undo.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                int value = input.getText().length() - 1;
+
+                if (value > 0) {
+                    StringBuilder undoneValue = new StringBuilder(input.getText());
+                    undoneValue.deleteCharAt(value);
+                    input.setText(String.valueOf(undoneValue));
+                }
             }
         });
     }
@@ -202,4 +242,5 @@ public class Calculator {
     public JComponent $$$getRootComponent$$$() {
         return myPanel;
     }
+
 }
