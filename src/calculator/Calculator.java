@@ -111,26 +111,32 @@ public class Calculator extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 number = Double.parseDouble(input.getText());
-                operation = 1;
                 input.setText(number + "+");
+                operation = 1;
             }
         });
         minus.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                input.setText(input.getText() + "-");
+                number = Double.parseDouble(input.getText());
+                input.setText(number + "-");
+                operation = 2;
             }
         });
         multiply.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                input.setText(input.getText() + "*");
+                number = Double.parseDouble(input.getText());
+                input.setText(number + "*");
+                operation = 3;
             }
         });
         divide.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                input.setText(input.getText() + "/");
+                number = Double.parseDouble(input.getText());
+                input.setText(number + "/");
+                operation = 4;
             }
         });
         clear.addActionListener(new ActionListener() {
@@ -154,34 +160,29 @@ public class Calculator extends JFrame {
         equals.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                arithmeticOperation();
+                switch (operation) {
+                    case 1:
+                        result = number + Double.parseDouble(input.getText());
+                        input.setText(Double.toString(result));
+                        break;
+
+                    case 2:
+                        result = number - Double.parseDouble(input.getText());
+                        input.setText(Double.toString(result));
+                        break;
+
+                    case 3:
+                        result = number * Double.parseDouble(input.getText());
+                        input.setText(Double.toString(result));
+                        break;
+
+                    case 4:
+                        result = number / Double.parseDouble(input.getText());
+                        input.setText(Double.toString(result));
+                        break;
+                }
             }
         });
-    }
-
-    private void arithmeticOperation() {
-
-        switch (operation) {
-            case 1:
-                result = number + Double.parseDouble(input.getText());
-                input.setText(Double.toString(result));
-                break;
-
-            case 2:
-                result = number - Double.parseDouble(input.getText());
-                input.setText(Double.toString(result));
-                break;
-
-            case 3:
-                result = number * Double.parseDouble(input.getText());
-                input.setText(Double.toString(result));
-                break;
-
-            case 4:
-                result = number / Double.parseDouble(input.getText());
-                input.setText(Double.toString(result));
-                break;
-        }
     }
 
     public static void main(String[] args) {

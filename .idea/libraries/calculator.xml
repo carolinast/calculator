@@ -1,11 +1,7 @@
 <component name="libraryTable">
   <library name="calculator">
-    <CLASSES>
-      <root url="file://$PROJECT_DIR$" />
-    </CLASSES>
+    <CLASSES />
     <JAVADOC />
-    <SOURCES>
-      <root url="file://$PROJECT_DIR$/src" />
-    </SOURCES>
+    <SOURCES />
   </library>
 </component>
