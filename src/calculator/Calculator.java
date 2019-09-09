@@ -29,9 +29,11 @@ public class Calculator extends JFrame {
     private JButton equals;
     private JButton clear;
 
-    double number;
+    double firstNumber;
+    double secondNumber;
     double result;
     int operation;
+    String sum;
 
     public Calculator() {
         $$$setupUI$$$();
@@ -110,32 +112,32 @@ public class Calculator extends JFrame {
         plus.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                number = Double.parseDouble(input.getText());
-                input.setText(number + "+");
+                firstNumber = Double.parseDouble(input.getText());
+                input.setText("");
                 operation = 1;
             }
         });
         minus.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                number = Double.parseDouble(input.getText());
-                input.setText(number + "-");
+                firstNumber = Double.parseDouble(input.getText());
+                input.setText("");
                 operation = 2;
             }
         });
         multiply.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                number = Double.parseDouble(input.getText());
-                input.setText(number + "*");
+                firstNumber = Double.parseDouble(input.getText());
+                input.setText("");
                 operation = 3;
             }
         });
         divide.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                number = Double.parseDouble(input.getText());
-                input.setText(number + "/");
+                firstNumber = Double.parseDouble(input.getText());
+                input.setText("");
                 operation = 4;
             }
         });
@@ -162,23 +164,31 @@ public class Calculator extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 switch (operation) {
                     case 1:
-                        result = number + Double.parseDouble(input.getText());
-                        input.setText(Double.toString(result));
+                        secondNumber = Double.parseDouble(input.getText());
+                        result = firstNumber + secondNumber;
+                        sum = String.valueOf(result);
+                        input.setText(sum);
                         break;
 
                     case 2:
-                        result = number - Double.parseDouble(input.getText());
-                        input.setText(Double.toString(result));
+                        secondNumber = Double.parseDouble(input.getText());
+                        result = firstNumber - secondNumber;
+                        sum = String.valueOf(result);
+                        input.setText(sum);
                         break;
 
                     case 3:
-                        result = number * Double.parseDouble(input.getText());
-                        input.setText(Double.toString(result));
+                        secondNumber = Double.parseDouble(input.getText());
+                        result = firstNumber * secondNumber;
+                        sum = String.valueOf(result);
+                        input.setText(sum);
                         break;
 
                     case 4:
-                        result = number / Double.parseDouble(input.getText());
-                        input.setText(Double.toString(result));
+                        secondNumber = Double.parseDouble(input.getText());
+                        result = firstNumber / secondNumber;
+                        sum = String.valueOf(result);
+                        input.setText(sum);
                         break;
                 }
             }
